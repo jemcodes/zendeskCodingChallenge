@@ -23,5 +23,17 @@ def hello_tickets():
         return 'Cue the sad trombone sounds - something went wrong!'
 
 
+@app.route('/<ticket_id>', methods=['GET'])
+def single_ticket(ticket_id):
+    res = requests.get(
+        f'https://jemcodes.zendesk.com/api/v2/tickets/{ticket_id}',
+        headers={'Authorization': auth_header})
+    if res.status_code == requests.codes.ok:
+        res_json = res.json()
+        return render_template('single_ticket.html', res_json=res_json)
+    else:
+        return 'Uh oh! Looks like a classic Dinosaur Ate My Ticket situation!'
+
+
 if __name__ == '__main__':
     app.run(debug=True)
