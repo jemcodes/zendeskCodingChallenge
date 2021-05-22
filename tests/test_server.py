@@ -22,6 +22,7 @@ def test_index(app, client):
     responses.add(
         responses.GET, 'https://jemcodes.zendesk.com/api/v2/tickets/',
         json={'tickets': []}, status=200)
+        
     res = client.get('/')
     assert res.status_code == 200
     assert 'Ticket List' in res.get_data(as_text=True)
@@ -36,4 +37,26 @@ def test_index_errors(app, client):
     res = client.get('/')
     assert res.status_code == 200
     assert 'Cue the sad trombone sounds - something went wrong!' \
+        in res.get_data(as_text=True)
+
+
+@responses.activate
+def test_single_ticket(app, client):
+    responses.add(
+        responses.GET, 'https://jemcodes.zendesk.com/api/v2/tickets/1',
+        json={'ticket': []}, status=200)
+    res = client.get('/1')
+    assert res.status_code == 200
+    assert 'Single Ticket' in res.get_data(as_text=True)
+
+
+@responses.activate
+def test_single_ticket_errors(app, client):
+    responses.add(
+        responses.GET, 'https://jemcodes.zendesk.com/api/v2/tickets/1',
+        status=500)
+
+    res = client.get('/1')
+    assert res.status_code == 200
+    assert 'Uh oh! Looks like a classic Dinosaur Ate My Ticket situation!' \
         in res.get_data(as_text=True)
