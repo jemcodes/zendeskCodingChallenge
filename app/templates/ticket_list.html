@@ -1,10 +1,30 @@
 <html>
-    <h1>Ticket List</h1>
 
-    {% for ticket in res_json.tickets %}
-    <div>
-        <a href="{{ ticket.id }}">{{ticket.subject}}</a>
+<head>
+    <title>Zendesk tickets</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ticket_list.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Ticket List</h1>
+    </header>
+    <div id="ticket-container">
+        {% for ticket in res_json.tickets %}
+        <div id="tickets">
+            <div id="ticket-info">
+                <div id="list-submitted">Date Submitted:
+                    <p>{{ ticket.created_at }}</p>
+                </div>
+                <div id="list-submitter">Submitted By: {{ ticket.submitter_id }}</div>
+                <div id="list-status">Status: {{ ticket.status }}</div>
+                <div id="list-subject">Subject: {{ticket.subject}}</div>
+                <a id="list-link" href="{{ ticket.id }}">See ticket details</a>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-
+</body>
 </html>

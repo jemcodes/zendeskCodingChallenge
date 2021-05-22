@@ -1,0 +1,82 @@
+body {
+    font-family: 'Kumbh Sans', sans-serif;
+    background-color: #bcc4cc;
+}
+
+h1 {
+    margin: 1rem 0 0 0;
+    padding: 1rem 0 0 0;
+    text-align: center;
+    font-size: 56px;
+    color: #17494D;
+}
+
+#ticket-container {
+    margin: 0 1rem 1rem 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#tickets {
+    height: 400px;
+    width: 20%;
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #f8f9f9;
+    box-shadow: 2px 2px 2px 2px rgba(30, 75, 81, .2);
+}
+
+#ticket-info {
+    position: relative;
+    flex: 1 1 300px;
+    height: 350px;
+    color: #17494D;
+    text-align: center;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+#list-submitted {
+    margin: 2rem 0 0 0;
+    font-size: 20px;
+}
+
+#list-submitter {
+    margin: 0 0 1rem 0;
+    padding: 0 0 1rem 0;
+    font-size: 16px;
+}
+
+#list-status {
+    margin: 0 1rem 1rem 1rem;
+    padding: 0 0 1rem 0;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+#list-subject {
+    margin: 0 1rem 1rem 1rem ;
+    font-size: 22px;
+}
+
+#list-link {
+    text-align: center;
+    color: #3D8DAE;
+    padding: 2rem 0 0 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#list-link:visited {
+    color: #7D3D54;
+}
