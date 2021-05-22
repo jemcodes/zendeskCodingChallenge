@@ -19,10 +19,11 @@ def client(app):
 
 @responses.activate
 def test_index(app, client):
+    """"Test that ticket list route renders ticket list view"""
     responses.add(
         responses.GET, 'https://jemcodes.zendesk.com/api/v2/tickets/',
         json={'tickets': []}, status=200)
-        
+
     res = client.get('/')
     assert res.status_code == 200
     assert 'Ticket List' in res.get_data(as_text=True)
@@ -30,6 +31,7 @@ def test_index(app, client):
 
 @responses.activate
 def test_index_errors(app, client):
+    """"Test that ticket list route renders error for 500 status code"""
     responses.add(
         responses.GET, 'https://jemcodes.zendesk.com/api/v2/tickets/',
         status=500)
@@ -42,6 +44,7 @@ def test_index_errors(app, client):
 
 @responses.activate
 def test_single_ticket(app, client):
+    """"Test that single ticket route renders single ticket view"""
     responses.add(
         responses.GET, 'https://jemcodes.zendesk.com/api/v2/tickets/1',
         json={'ticket': []}, status=200)
@@ -52,6 +55,7 @@ def test_single_ticket(app, client):
 
 @responses.activate
 def test_single_ticket_errors(app, client):
+    """"Test that single ticket route renders error for 500 status code"""
     responses.add(
         responses.GET, 'https://jemcodes.zendesk.com/api/v2/tickets/1',
         status=500)
