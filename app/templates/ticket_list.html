@@ -1,0 +1,10 @@
+<html>
+    <h1>Ticket List</h1>
+
+    {% for ticket in res_json.tickets %}
+    <div>
+        <a href="{{ ticket.id }}">{{ticket.subject}}</a>
+    </div>
+    {% endfor %}
+
+</html>

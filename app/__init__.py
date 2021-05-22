@@ -12,10 +12,15 @@ encoded_data = base64.b64encode(
 auth_header = f'Basic {encoded_data}'
 
 
-@app.route('/')
-def hello_world():
-    """Send a test message to the browser"""
-    return jsonify({'message': 'hello world!'})
+@app.route('/', methods=['GET'])
+def hello_tickets():
+    res = requests.get('https://jemcodes.zendesk.com/api/v2/tickets/',
+                       headers={'Authorization': auth_header})
+    if res.status_code == requests.codes.ok:
+        res_json = res.json()
+        return render_template('ticket_list.html', res_json=res_json)
+    else:
+        return 'Cue the sad trombone sounds - something went wrong!'
 
 
 if __name__ == '__main__':
