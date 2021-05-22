@@ -14,6 +14,7 @@ auth_header = f'Basic {encoded_data}'
 
 @app.route('/', methods=['GET'])
 def hello_tickets():
+    """"Route to list of tickets and render ticket list view"""
     res = requests.get('https://jemcodes.zendesk.com/api/v2/tickets/',
                        headers={'Authorization': auth_header})
     if res.status_code == requests.codes.ok:
@@ -25,6 +26,7 @@ def hello_tickets():
 
 @app.route('/<ticket_id>', methods=['GET'])
 def single_ticket(ticket_id):
+    """"Route to a single ticket by id and render single ticket view"""
     res = requests.get(
         f'https://jemcodes.zendesk.com/api/v2/tickets/{ticket_id}',
         headers={'Authorization': auth_header})
