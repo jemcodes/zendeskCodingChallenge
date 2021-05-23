@@ -11,15 +11,15 @@ This ticket viewer is built using Python 3.9.4 and Flask 2.0.1
     ```bash
     git clone 
     ```
-2. Install dependencies
+2. Create a **.env** file based on the .env.example with proper settings for your development environment.
+3. Install dependencies
     ```bash
     pipenv install
     ```
-3. Run virtual environment shell
+4. Run virtual environment shell
     ```bash
     pipenv shell
     ```
-4. Create a **.env** file based on the .env.example with proper settings for your development environment.
 
 5. Run server
     ```bash
