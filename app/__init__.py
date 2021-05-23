@@ -6,6 +6,7 @@ from .config import Configuration
 
 app = Flask(__name__)
 
+subdomain = Configuration.subdomain
 email = Configuration.email
 password = Configuration.password
 encoded_data = base64.b64encode(
@@ -16,7 +17,7 @@ auth_header = f'Basic {encoded_data}'
 @app.route('/', methods=['GET'])
 def hello_tickets():
     """"Route to list paginated tickets and render ticket list view"""
-    url = 'https://jemcodes.zendesk.com/api/v2/tickets.json?page[size]=100'
+    url = f'https://{subdomain}.zendesk.com/api/v2/tickets.json?page[size]=100'
     tickets = []
 
     while url:
@@ -41,7 +42,7 @@ def hello_tickets():
 def single_ticket(ticket_id):
     """"Route to a single ticket by id and render single ticket view"""
     res = requests.get(
-        f'https://jemcodes.zendesk.com/api/v2/tickets/{ticket_id}',
+        f'https://{subdomain}.zendesk.com/api/v2/tickets/{ticket_id}',
         headers={'Authorization': auth_header})
     if res.status_code == requests.codes.ok:
         res_json = res.json()
