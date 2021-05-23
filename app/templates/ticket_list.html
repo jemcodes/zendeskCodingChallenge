@@ -10,9 +10,10 @@
 <body>
     <header>
         <h1>Ticket List</h1>
+        <h2 id="ticket-count">Current Ticket Count: {{ tickets|length }}</h2>
     </header>
     <div id="ticket-container">
-        {% for ticket in res_json.tickets %}
+        {% for ticket in tickets %}
         <div id="tickets">
             <div id="ticket-info">
                 <div id="list-submitted">Date Submitted:
@@ -20,11 +21,12 @@
                 </div>
                 <div id="list-submitter">Submitted By: {{ ticket.submitter_id }}</div>
                 <div id="list-status">Status: {{ ticket.status }}</div>
-                <div id="list-subject">Subject: {{ticket.subject}}</div>
+                <div id="list-subject">Subject: {{ ticket.subject }}</div>
                 <a id="list-link" href="{{ ticket.id }}">See ticket details</a>
             </div>
         </div>
         {% endfor %}
     </div>
 </body>
+
 </html>
