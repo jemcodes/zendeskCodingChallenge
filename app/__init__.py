@@ -13,18 +13,6 @@ encoded_data = base64.b64encode(
 auth_header = f'Basic {encoded_data}'
 
 
-# @app.route('/', methods=['GET'])
-# def hello_tickets():
-#     """"Route to list of tickets and render ticket list view"""
-#     res = requests.get('https://jemcodes.zendesk.com/api/v2/tickets/',
-#                        headers={'Authorization': auth_header})
-#     if res.status_code == requests.codes.ok:
-#         res_json = res.json()
-#         return render_template('ticket_list.html', res_json=res_json)
-#     else:
-#         return 'Cue the sad trombone sounds - something went wrong!'
-
-
 @app.route('/', methods=['GET'])
 def hello_tickets():
     """"Route to list paginated tickets and render ticket list view"""
@@ -44,7 +32,7 @@ def hello_tickets():
             else:
                 return 'Cue the sad trombone sounds - something went wrong!'
         except ConnectionError:
-            return 'Zendesk is currently unavailable.'
+            return 'Zendesk dipped out for a snack. Please try again later!'
 
     return render_template('ticket_list.html', tickets=tickets)
 
