@@ -16,7 +16,7 @@ auth_header = f'Basic {encoded_data}'
 
 @app.route('/', methods=['GET'])
 def hello_tickets():
-    """"Route to list paginated tickets and render ticket list view"""
+    """Route to list paginated tickets and render ticket list view"""
     url = f'https://{subdomain}.zendesk.com/api/v2/tickets.json?page[size]=100'
     tickets = []
 
@@ -40,7 +40,7 @@ def hello_tickets():
 
 @app.route('/<ticket_id>', methods=['GET'])
 def single_ticket(ticket_id):
-    """"Route to a single ticket by id and render single ticket view"""
+    """Route to a single ticket by id and render single ticket view"""
     res = requests.get(
         f'https://{subdomain}.zendesk.com/api/v2/tickets/{ticket_id}',
         headers={'Authorization': auth_header})
