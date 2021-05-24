@@ -57,7 +57,7 @@ def test_index_errors(app, client):
     """Test that ticket list route renders error for 500 status code"""
     responses.add(
         responses.GET,
-        'https://jemcodes.zendesk.com/api/v2/tickets.json?page[size]=100',
+        f'https://{subdomain}.zendesk.com/api/v2/tickets.json?page[size]=100',
         status=500)
     res = client.get('/')
     assert res.status_code == 200
