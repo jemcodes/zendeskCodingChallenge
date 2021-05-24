@@ -9,7 +9,7 @@ This ticket viewer is built using Python 3.9.4 and Flask 2.0.1
 ### 👩‍💻 Getting Started
 1. Clone this repository and navigate into the project directory
     ```bash
-    git clone http
+    git clone https://github.com/jemcodes/zendeskCodingChallenge.git
     ```
 2. Create a **.env** file based on the .env.example with proper settings for your development environment.
 
