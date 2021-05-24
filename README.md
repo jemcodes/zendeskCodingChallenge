@@ -2,6 +2,8 @@
 
 View a list of Zendesk tickets or choose an individual ticket to see details.
 
+![zendeskScreenshot](https://user-images.githubusercontent.com/41805567/119281116-67a8bc00-bc02-11eb-8682-9767ed06bf71.png)
+
 ## 🧰 Installation & Usage
 
 This ticket viewer is built using Python 3.9.4 and Flask 2.0.1
