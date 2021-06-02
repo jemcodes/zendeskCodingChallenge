@@ -29,7 +29,7 @@ This ticket viewer is built using Python 3.9.4 and Flask 2.0.1
     ```bash
     pipenv run flask run
     ```
-6. View ticket list or single ticket
+6. View ticket list or single ticket (must be running local server)
 
     [Ticket List](http://127.0.0.1:5000/)
 
